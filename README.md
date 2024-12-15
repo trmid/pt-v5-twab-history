@@ -5,8 +5,8 @@ Library to quickly query historical balance information for a Pool Together V5 v
 ## Example
 
 ```js
+import { getMaxObservationHistory } from "pt-v5-twab-history";
 import { createPublicClient, http } from "viem";
-import { getMaxObservationHistory } from "./src/index.js";
 import { optimism } from "viem/chains";
 
 getMaxObservationHistory({
