@@ -1,0 +1,31 @@
+{
+  "type": "module",
+  "main": "src/index.js",
+  "dependencies": {
+    "viem": "^2.21.55"
+  },
+  "name": "pt-v5-twab-history",
+  "description": "Library to quickly query historical balance information for a Pool Together vault or user account.",
+  "version": "1.0.0",
+  "devDependencies": {},
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trmid/pt-v5-twab-history.git"
+  },
+  "keywords": [
+    "PoolTogether",
+    "JavaScript",
+    "Solidity",
+    "TWAB",
+    "History"
+  ],
+  "author": "trmid.eth",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/trmid/pt-v5-twab-history/issues"
+  },
+  "homepage": "https://github.com/trmid/pt-v5-twab-history#readme"
+}

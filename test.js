@@ -1,10 +1,3 @@
-# pt-v5-twab-history
-
-Library to quickly query historical balance information for a Pool Together V5 vault or user account.
-
-## Example
-
-```js
 import { createPublicClient, http } from "viem";
 import { getMaxObservationHistory } from "./src/index.js";
 import { optimism } from "viem/chains";
@@ -17,4 +10,3 @@ getMaxObservationHistory({
   // blockNumber: BigInt(0x716462d), // optional, can be used to query further in the past
   // twabOffset: 0, // optional, can be used to skip the TWAB offset query if relative timestamps are acceptable or if the caller already knows the TWAB offset
 }).then(console.log)
-```
