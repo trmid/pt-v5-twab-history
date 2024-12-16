@@ -1,0 +1,17 @@
+{
+  "include": ["src/**/*.js"],
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "allowJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "src",
+    "declarationMap": true,
+    "lib": [
+			"esnext",
+			"DOM",
+			"DOM.Iterable"
+		],
+    "skipLibCheck": true
+  }
+}

@@ -1,0 +1,5 @@
+src/contracts
+test.js
+tsconfig.json
+!src/**/*.d.ts
+!src/**/*.d.ts.map

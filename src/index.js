@@ -1,11 +1,14 @@
-import { decodeFunctionResult, encodeFunctionData, parseAbi } from "viem"
+import { createPublicClient, custom, decodeFunctionResult, encodeFunctionData, http, parseAbi } from "viem"
 
 /**
  * Fetches an account's balance history for a vault.
  * 
+ * @dev One of `rpcUrl`, `customTransportParams`, or `viemClient` must be set.
  * @dev Pass in the `twabOffset` to save on extra queries when fetching data from the same twab controller more than once.
  * @param {{
- *  client: import("viem").PublicClient
+ *  rpcUrl?: string
+ *  customTransportParams?: Parameters<import("viem").custom>
+ *  viemClient?: import("viem").PublicClient
  *  account?: import("viem").Address
  *  vault: import("viem").Address
  *  twabController: import("viem").Address
@@ -18,22 +21,34 @@ import { decodeFunctionResult, encodeFunctionData, parseAbi } from "viem"
  *  timestamp: number
  * }[]}
  */
-export const getMaxObservationHistory = async ({
-  client,
+export const getTwabHistory = async ({
+  rpcUrl,
+  customTransportParams,
+  viemClient,
   account,
   vault,
   twabController,
   twabOffset,
   blockNumber
 }) => {
+  if (!(rpcUrl || customTransportParams || viemClient)) {
+    throw new Error("One of `rpcUrl`, `customTransportParams`, or `viemClient` must be set in `getTwabHistory`.")
+  }
+  if (!viemClient) {
+    if (rpcUrl) {
+      viemClient = createPublicClient({ transport: http(rpcUrl) })
+    } else if (customTransportParams) {
+      viemClient = createPublicClient({ transport: custom(...customTransportParams) })
+    }
+  }
   if (twabOffset === undefined) {
-    twabOffset = await client.readContract({
+    twabOffset = await viemClient.readContract({
       address: twabController,
       abi: parseAbi(["function PERIOD_OFFSET() external view returns (uint32)"]),
       functionName: "PERIOD_OFFSET"
     })
   }
-  const res = await client.call({
+  const res = await viemClient.call({
     to: twabController,
     data: encodeFunctionData({
       abi: observationFetcherAbi,

@@ -2,14 +2,16 @@
   "name": "pt-v5-twab-history",
   "main": "src/index.js",
   "description": "Library to quickly query historical balance information for a Pool Together vault or user account.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "dependencies": {
     "viem": "^2.21.55"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "node test.js"
+    "test": "node test.js",
+    "build": "npx tsc",
+    "publish": "npm run build && npm publish"
   },
   "repository": {
     "type": "git",
