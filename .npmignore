@@ -1,5 +1,6 @@
-src/contracts
+src/contracts/**/*.sol
 test.js
 tsconfig.json
 !src/**/*.d.ts
 !src/**/*.d.ts.map
+test
