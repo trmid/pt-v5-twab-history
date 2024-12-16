@@ -15,11 +15,11 @@ import { createPublicClient, custom, decodeFunctionResult, encodeFunctionData, h
  *  twabOffset?: number
  *  blockNumber?: bigint
  * }}
- * @returns {{
+ * @returns {Promise<{
  *  cumulativeBalance: BigInt,
  *  balance: BigInt,
  *  timestamp: number
- * }[]}
+ * }[]>}
  */
 export const getTwabHistory = async ({
   rpcUrl,
