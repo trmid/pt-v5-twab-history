@@ -16,8 +16,8 @@ import { createPublicClient, custom, decodeFunctionResult, encodeFunctionData, h
  *  blockNumber?: bigint
  * }}
  * @returns {Promise<{
- *  cumulativeBalance: BigInt,
- *  balance: BigInt,
+ *  cumulativeBalance: bigint,
+ *  balance: bigint,
  *  timestamp: number
  * }[]>}
  */
